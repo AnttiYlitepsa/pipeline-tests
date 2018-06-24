@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+*.html
+*.xml
+*.log
+testsuite
+report
+temp

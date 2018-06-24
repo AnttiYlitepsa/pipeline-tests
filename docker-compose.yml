@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  xvfb:
+    image: xvfb
+    command:
+      ["remote"]
+
+  robotframework:
+    #build: .
+    image: robot_framework
+    depends_on:
+    - xvfb
+    #volumes:
+    #- ./test-suite:/test-suite
+    #- ./report:/report
+    command:
+      #[" --loglevel DEBUG --outputdir /report test-suite/"]
+      [" --loglevel DEBUG test-suite/"]
+
+    privileged: true
+    #command:
+    #  [" --help"]
+
+#volumes:
+  #test-suite:
+  #report:
