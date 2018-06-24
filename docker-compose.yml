@@ -13,15 +13,15 @@ services:
     - xvfb
     #volumes:
     #- ./test-suite:/test-suite
-    #- ./report:/report
+    - ./report:/report
     command:
-      #[" --loglevel DEBUG --outputdir /report test-suite/"]
-      [" --loglevel DEBUG test-suite/"]
+      [" --loglevel DEBUG --outputdir /report test-suite/"]
+      #[" --loglevel DEBUG test-suite/"]
 
     privileged: true
     #command:
     #  [" --help"]
 
-#volumes:
+volumes:
   #test-suite:
-  #report:
+  report:
