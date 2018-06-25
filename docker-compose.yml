@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   xvfb:
@@ -12,15 +12,16 @@ services:
     depends_on:
     - xvfb
     volumes:
-    #- ./test-suite:/test-suite
+    - ./test-suite:/test-suite
     - ./report:/report
     command:
-      [" --loglevel DEBUG -l log_results.html --outputdir /report test-suite/"]
-      #[" --loglevel DEBUG test-suite/"]
+      [" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
+      #[" --loglevel DEBUG /test-suite"]
 
     privileged: true
     #command:
     #  [" --help"]
 
 volumes:
+  test-suite:
   report:

@@ -1,5 +1,5 @@
  #!/bin/bash
-
+mkdir -p report
 rm -r report || true
 
 docker-compose up -d xvfb
