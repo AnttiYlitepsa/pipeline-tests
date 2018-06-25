@@ -5,9 +5,8 @@ node {
    //}
    
    stage('Clone testsuite from github...') {
-       git changelog: false,
+       git branch: 'using-docker-slaves',
        credentialsId: 'b3eb9d33-13f1-4b34-921d-b7636eb61054',
-       poll: false,
        url: 'https://github.com/AnttiYlitepsa/pipeline-tests.git'
        sh('ls -R')
    }
