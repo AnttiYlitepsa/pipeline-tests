@@ -12,8 +12,10 @@ services:
     depends_on:
     - xvfb
     volumes:
-    - ${WORKSPACE}/test-suite:/test-suite
-    - ${WORKSPACE}/report:/report
+    #- ${WORKSPACE}/test-suite:/test-suite
+    #- ${WORKSPACE}/report:/report
+    - ${PWD}/test-suite:/test-suite
+    - ${PWD}/report:/report
     command:
       [" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
       #[" --loglevel DEBUG /test-suite"]

@@ -22,7 +22,6 @@ node {
       sh('mkdir -p report')
       //sh('rm -r report || true')
       sh('docker-compose up robotframework')
-      
       //stash includes: 'report/', name: 'report'
       sh('sleep 2')
       sh('ls -R')
