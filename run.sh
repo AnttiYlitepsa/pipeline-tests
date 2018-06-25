@@ -9,3 +9,4 @@ docker-compose up robotframework
 
 #docker run -v test-suite:/suite robot_framework
 docker-compose down
+docker volume prune --force
