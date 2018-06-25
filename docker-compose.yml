@@ -15,7 +15,7 @@ services:
     #- ./test-suite:/test-suite
     - ./report:/report
     command:
-      [" --loglevel DEBUG --outputdir /report test-suite/"]
+      [" --loglevel DEBUG -l log_results.html --outputdir /report test-suite/"]
       #[" --loglevel DEBUG test-suite/"]
 
     privileged: true
