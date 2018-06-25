@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180625 10:32:32.059" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
+<suite source="/test-suite" id="s1" name="Test-Suite">
+<suite source="/test-suite/dummy_test.robot" id="s1-s1" name="Dummy Test">
+<kw type="setup" name="Setup">
+<kw name="Open Display" library="xvfb_lib">
+<msg timestamp="20180625 10:32:32.230" level="INFO">INFO 1.52992275218e+12 Starting Up Xvfb
+INFO Starting process:
+/usr/bin/Xvfb :0 -ac -listen tcp -screen 0 1920x1080x24
+DEBUG Process configuration:
+cwd:     /
+shell:   True
+stdout:  PIPE
+stderr:  PIPE
+alias:   None
+env:     None</msg>
+<status status="PASS" endtime="20180625 10:32:32.230" starttime="20180625 10:32:32.180"></status>
+</kw>
+<status status="PASS" endtime="20180625 10:32:32.230" starttime="20180625 10:32:32.180"></status>
+</kw>
+<test id="s1-s1-t1" name="Browser Should Open Google's Homepage In Firefox">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>https://www.google.com</arg>
+<arg>browser=firefox</arg>
+</arguments>
+<msg timestamp="20180625 10:32:32.232" level="INFO">Opening browser 'firefox' to base url 'https://www.google.com'.</msg>
+<msg timestamp="20180625 10:32:33.289" level="DEBUG">POST http://127.0.0.1:41865/session {"capabilities": {"alwaysMatch": {"acceptInsecureCerts": true, "browserName": "firefox", "moz:firefoxOptions": {"profile": "UEsDBBQAAAAIABBU2Uxaw2sCqgMAAPwMAAAHAAAAdXNlci5qc51WTW/jNhC991cUObVATeSje2lPaTYLLLBoijWCPRIUNbIYUyTLIa3433coWmsnlihvb/rgkI8z772ZiOC589D8clWLIDw464MyG+asVnLP0sd1rDqFqKz5Z/h4LyW4APXVbz83QiP8+udP8WQb27FOvHLZetsBR+mVC9xHw4PqgGLurt8G9FDVXu3oHYyoNHAjAr1y2IEJSAHBx3dnBGv1VgVmIPTWbzthxAY8qxWmDSZDKm97emO2abQyMI39RexEBsysC3RhZNja/rN5oEc7szO8BjA4LI6O8gUs32MmPyOQx+cv9+yOiWMyz7cWzl2055iPABo6CH7PPLyAnNt2hIAgvGwPJ5TRomhgeE7c6ITuiSplTIdEr+gOyITWtufVntfQiKjDJKy3BGxB6NDmd0Lqd0oCa5TH8DWa6SOPTBKIkcgXDZ2ClAZO/I3gy9mg00N0rCXaOuITt7STVzWwDoMdKHOlNsZ6uCpvkIJp8XWh7uPWRUBBVMgo0ebJPDmYufOxloNCCSkVxsNw/YYUyKUX2E7HnjPX2KCa/TMOqZqIQJDRq7BnEt2h/GVYyQ16ZWrbszp27oQyRSHJFuT2wXaOrKBSOp1o1KYNer+QhXc1TDUTlY3hj0oLs50pnKare3KoMqFHY1t2tDMm9aBlMsPodRlRDbukZWSEx3qZXefSpGm72STllJaXoDFR1yq5nlhAebBd1oZAbG8VtvtV+u1IdisNZhMS4W4/fJh11xJER6x1ARP9eWdroRfKMu8aY0IOeXy8xJbfGF3x4FenSG7kbAzJFkSIpDpS3r9R+cVDWqCwgeQfsyH+lf/MM+/Q27glJ+A1idBsuLbi4obwg/0jF2FYfzun7N4kAGzsvqlTfmvBrBPFCN6CMSh0Wuyhfry5Xv9NtiOTkn6fXmygJzYkvv5vLowdpBj/3d4apYGeyE+8koFbr4hIPM9E5Xt5EHW6HoSh/35KDeue8Mjl6aHSVm61wlAGOaov53019lmiYoj4w3mJLhWxKI2TKUTEYGdSl1qjoet30FXg18PrDJzvvqvMlg2EpgLnLnHOt5MEpdM/Zh2sJcWl7W9m2mymDFt2XNJWTgUnKfMX5PCaJjKV0Z8X7Cj7vlUkmFSvsupPxpJh2DsZSyT4mRF3Ygh40BZn2u0Fs/tF7nesSEq7z53gdkEk79VxN81XKVya61cJpdCriwQ54qJP9ZP5NlAEb66Zogza569fLuvvCLrB6DLfMyHSyv8AUEsBAhQDFAAAAAgAEFTZTFrDawKqAwAA/AwAAAcAAAAAAAAAAAAAAKSBAAAAAHVzZXIuanNQSwUGAAAAAAEAAQA1AAAAzwMAAAAA"}}, "firstMatch": [{}]}, "desiredCapabilities": {"acceptInsecureCerts": true, "browserName": "firefox", "moz:firefoxOptions": {"profile": "UEsDBBQAAAAIABBU2Uxaw2sCqgMAAPwMAAAHAAAAdXNlci5qc51WTW/jNhC991cUObVATeSje2lPaTYLLLBoijWCPRIUNbIYUyTLIa3433coWmsnlihvb/rgkI8z772ZiOC589D8clWLIDw464MyG+asVnLP0sd1rDqFqKz5Z/h4LyW4APXVbz83QiP8+udP8WQb27FOvHLZetsBR+mVC9xHw4PqgGLurt8G9FDVXu3oHYyoNHAjAr1y2IEJSAHBx3dnBGv1VgVmIPTWbzthxAY8qxWmDSZDKm97emO2abQyMI39RexEBsysC3RhZNja/rN5oEc7szO8BjA4LI6O8gUs32MmPyOQx+cv9+yOiWMyz7cWzl2055iPABo6CH7PPLyAnNt2hIAgvGwPJ5TRomhgeE7c6ITuiSplTIdEr+gOyITWtufVntfQiKjDJKy3BGxB6NDmd0Lqd0oCa5TH8DWa6SOPTBKIkcgXDZ2ClAZO/I3gy9mg00N0rCXaOuITt7STVzWwDoMdKHOlNsZ6uCpvkIJp8XWh7uPWRUBBVMgo0ebJPDmYufOxloNCCSkVxsNw/YYUyKUX2E7HnjPX2KCa/TMOqZqIQJDRq7BnEt2h/GVYyQ16ZWrbszp27oQyRSHJFuT2wXaOrKBSOp1o1KYNer+QhXc1TDUTlY3hj0oLs50pnKare3KoMqFHY1t2tDMm9aBlMsPodRlRDbukZWSEx3qZXefSpGm72STllJaXoDFR1yq5nlhAebBd1oZAbG8VtvtV+u1IdisNZhMS4W4/fJh11xJER6x1ARP9eWdroRfKMu8aY0IOeXy8xJbfGF3x4FenSG7kbAzJFkSIpDpS3r9R+cVDWqCwgeQfsyH+lf/MM+/Q27glJ+A1idBsuLbi4obwg/0jF2FYfzun7N4kAGzsvqlTfmvBrBPFCN6CMSh0Wuyhfry5Xv9NtiOTkn6fXmygJzYkvv5vLowdpBj/3d4apYGeyE+8koFbr4hIPM9E5Xt5EHW6HoSh/35KDeue8Mjl6aHSVm61wlAGOaov53019lmiYoj4w3mJLhWxKI2TKUTEYGdSl1qjoet30FXg18PrDJzvvqvMlg2EpgLnLnHOt5MEpdM/Zh2sJcWl7W9m2mymDFt2XNJWTgUnKfMX5PCaJjKV0Z8X7Cj7vlUkmFSvsupPxpJh2DsZSyT4mRF3Ygh40BZn2u0Fs/tF7nesSEq7z53gdkEk79VxN81XKVya61cJpdCriwQ54qJP9ZP5NlAEb66Zogza569fLuvvCLrB6DLfMyHSyv8AUEsBAhQDFAAAAAgAEFTZTFrDawKqAwAA/AwAAAcAAAAAAAAAAAAAAKSBAAAAAHVzZXIuanNQSwUGAAAAAAEAAQA1AAAAzwMAAAAA"}, "marionette": true}}</msg>
+<msg timestamp="20180625 10:32:35.215" level="DEBUG">Finished Request</msg>
+<msg timestamp="20180625 10:32:35.216" level="DEBUG">POST http://127.0.0.1:41865/session/11ea8a46-e31f-4bc0-8693-c1f2c17b712e/timeouts {"script": 5000}</msg>
+<msg timestamp="20180625 10:32:35.221" level="DEBUG">Finished Request</msg>
+<msg timestamp="20180625 10:32:35.221" level="DEBUG">POST http://127.0.0.1:41865/session/11ea8a46-e31f-4bc0-8693-c1f2c17b712e/timeouts {"implicit": 0}</msg>
+<msg timestamp="20180625 10:32:35.231" level="DEBUG">Finished Request</msg>
+<msg timestamp="20180625 10:32:35.231" level="DEBUG">POST http://127.0.0.1:41865/session/11ea8a46-e31f-4bc0-8693-c1f2c17b712e/url {"url": "https://www.google.com"}</msg>
+<msg timestamp="20180625 10:32:36.096" level="DEBUG">Finished Request</msg>
+<msg timestamp="20180625 10:32:36.096" level="DEBUG">Opened browser with session id 11ea8a46-e31f-4bc0-8693-c1f2c17b712e.</msg>
+<status status="PASS" endtime="20180625 10:32:36.096" starttime="20180625 10:32:32.231"></status>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<doc>Verifies that current page title equals ``title``.</doc>
+<arguments>
+<arg>Google</arg>
+</arguments>
+<msg timestamp="20180625 10:32:36.097" level="DEBUG">GET http://127.0.0.1:41865/session/11ea8a46-e31f-4bc0-8693-c1f2c17b712e/title {}</msg>
+<msg timestamp="20180625 10:32:36.101" level="DEBUG">Finished Request</msg>
+<msg timestamp="20180625 10:32:36.101" level="INFO">Page title is 'Google'.</msg>
+<status status="PASS" endtime="20180625 10:32:36.101" starttime="20180625 10:32:36.096"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<msg timestamp="20180625 10:32:36.101" level="DEBUG">Closing browser with session id 11ea8a46-e31f-4bc0-8693-c1f2c17b712e.</msg>
+<msg timestamp="20180625 10:32:36.101" level="DEBUG">DELETE http://127.0.0.1:41865/session/11ea8a46-e31f-4bc0-8693-c1f2c17b712e {}</msg>
+<msg timestamp="20180625 10:32:36.185" level="DEBUG">Finished Request</msg>
+<status status="PASS" endtime="20180625 10:32:36.186" starttime="20180625 10:32:36.101"></status>
+</kw>
+<status status="PASS" endtime="20180625 10:32:36.187" critical="yes" starttime="20180625 10:32:32.230"></status>
+</test>
+<kw type="teardown" name="Teardown">
+<kw name="Close Display" library="xvfb_lib">
+<msg timestamp="20180625 10:32:36.293" level="INFO">INFO Shutting down Xvfb
+INFO Gracefully terminating process.
+INFO Process completed.</msg>
+<status status="PASS" endtime="20180625 10:32:36.294" starttime="20180625 10:32:36.188"></status>
+</kw>
+<status status="PASS" endtime="20180625 10:32:36.294" starttime="20180625 10:32:36.188"></status>
+</kw>
+<status status="PASS" endtime="20180625 10:32:36.294" starttime="20180625 10:32:32.081"></status>
+</suite>
+<status status="PASS" endtime="20180625 10:32:36.296" starttime="20180625 10:32:32.062"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Test-Suite" pass="1">Test-Suite</stat>
+<stat fail="0" id="s1-s1" name="Dummy Test" pass="1">Test-Suite.Dummy Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

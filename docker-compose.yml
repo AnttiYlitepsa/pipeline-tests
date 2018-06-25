@@ -13,7 +13,7 @@ services:
     - xvfb
     volumes:
     #- ./test-suite:/test-suite
-    - ./var/jenkins_home/workspace/test-suite:/test-suite
+    - ./test-suite:/test-suite
     - ./report:/report
     command:
       [" --loglevel DEBUG -l log_results.html --outputdir /report /test-suite"]
