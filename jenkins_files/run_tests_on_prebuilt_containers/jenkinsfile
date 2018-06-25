@@ -1,0 +1,100 @@
+node {
+   //stage('Clone robot container repo') { // for display purposes
+      // Get some code from a GitHub repository
+      //checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b3eb9d33-13f1-4b34-921d-b7636eb61054', url: 'https://github.com/KC-Hybris/qa-robot-container.git']]]
+   //}
+   
+   stage('Clone testsuite from github...') {
+       git changelog: false,
+       credentialsId: 'b3eb9d33-13f1-4b34-921d-b7636eb61054',
+       poll: false,
+       url: 'https://github.com/AnttiYlitepsa/pipeline-tests.git'
+       sh('ls -R')
+   }
+
+   stage('Set up xvfb container') {
+      sh('docker-compose up -d xvfb')
+      sh('sleep 2')
+      sh('ls -R')
+   }
+   
+   stage('Run robot container with the tests') {
+      sh('mkdir -p report')
+      //sh('rm -r report || true')
+      sh('docker-compose up robotframework')
+      def workspace = pwd()
+      sh('echo ${workspace}')
+      //stash includes: 'report/', name: 'report'
+      sh('sleep 2')
+      sh('ls -R')
+   }
+
+   stage('Close down the containers') {
+      sh('docker-compose down')
+      sh('sleep 2')
+      sh('docker ps')
+   }
+   
+   /*stage('Test results') {
+       //unstash('report')
+       sh('ls -R')
+       step([$class: 'RobotPublisher',
+       disableArchiveOutput: false,
+       logFileName: 'log.html',
+       otherFiles: '',
+       outputFileName: 'output.xml',
+       outputPath: 'report/',
+       passThreshold: 100,
+       reportFileName: 'report.html',
+       unstableThreshold: 0]);
+      
+   }*/
+   
+    //stage('Read the reports') {
+        //junit 'report/**/*.xml'
+        //deleteDir()
+       //step([$class: 'WsCleanup'])
+    //}
+   
+   /*stage('Print out RF test reports') {
+        unstash('report')
+        step([$class: 'RobotPublisher',
+        outputPath: 'report/',
+        disableArchiveOutput : false,
+        passThreshold: 0,
+        unstableThreshold: 0,
+        otherFiles: ""])
+   }*/
+
+
+    stage('Publish results (visible under build)') {
+        step(
+        [
+        $class : 'RobotPublisher',
+        outputPath : 'report/',
+        outputFileName : "*.xml",
+        disableArchiveOutput : false,
+        passThreshold : 100,
+        unstableThreshold: 95.0,
+        otherFiles : "*.png",
+        
+        ]
+        )
+    }
+   
+    /*stage('Publish test results'){
+        sh('ls')
+        step([
+        $class           : 'hudson.plugins.robot.RobotPublisher',
+        outputPath       : 'report',
+        passThreshold    : 100,
+        unstableThreshold: 100,
+        otherFiles       : '',
+        reportFileName   : '*\\report*.html',
+        logFileName      : '*\\log*.html',
+        outputFileName   : '*\\output*.xml'
+        ])
+    }*/
+    
+    
+}
