@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   xvfb:
@@ -15,10 +15,10 @@ services:
     #- ${WORKSPACE}/test-suite:/test-suite
     #- ${WORKSPACE}/report:/report
     #- ${PWD}/Suite:/Suite
-    - ${PWD}/report:/report
+    - ./report:/report
     command:
-      #[" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
-      [" --loglevel DEBUG -l log_results.html --outputdir report Suite"]
+      [" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
+      #[" --loglevel DEBUG -l log_results.html --outputdir report Suite"]
 
       #[" --loglevel DEBUG /test-suite"]
 
@@ -27,5 +27,5 @@ services:
     #  [" --help"]
 
 volumes:
-  #Suite:
   report:
+  #Suite:
