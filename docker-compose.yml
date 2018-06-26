@@ -8,7 +8,7 @@ services:
 
   robotframework:
     #build: .
-    image: robot_framework
+    image: robotframework
     depends_on:
     - xvfb
     volumes:
