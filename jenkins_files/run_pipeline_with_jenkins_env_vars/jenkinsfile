@@ -1,0 +1,57 @@
+node {
+
+   stage('Clone testsuite from github...') {
+       git changelog: false,
+       branch: 'volume-problems',
+       poll: false,
+       url: 'https://github.com/AnttiYlitepsa/pipeline-tests.git'
+       sh('ls -R')
+       echo('Show env variables')
+       sh 'env > env.txt' 
+        for (String i : readFile('env.txt').split("\r?\n")) {
+        println i
+        }
+        echo('$env.PWD')
+        echo(pwd())
+        def workspace = pwd()
+
+   }
+
+   stage('Set up xvfb container') {
+      sh('docker-compose up -d xvfb')
+      sh('sleep 2')
+      sh('ls -R')
+   }
+   
+   stage('Run robot container with the tests') {
+      sh('mkdir -p report')
+      //sh('rm -r report || true')
+      echo workspace
+      sh('docker-compose up robotframework')
+      sh('docker volume ls')
+      //stash includes: 'report/', name: 'report'
+      sh('sleep 2')
+      sh('ls -R')
+   }
+
+   stage('Close down the containers') {
+      sh('docker-compose down')
+      sh('sleep 2')
+      sh('docker ps')
+   }
+   
+
+    stage('Publish results (visible under build)') {
+        //This only works properly if the reports actually are published in the report folder!
+        step([
+        $class : 'RobotPublisher',
+        outputPath : 'report/',
+        outputFileName : "*.xml",
+        disableArchiveOutput : false,
+        passThreshold : 100,
+        unstableThreshold: 95.0,
+        otherFiles : "*.png",
+        ])
+    }
+   
+}
