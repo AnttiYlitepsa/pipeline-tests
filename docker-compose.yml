@@ -18,7 +18,7 @@ services:
     - ${PWD}/report:/report
     command:
       #[" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
-      [" --loglevel DEBUG -l log_results.html --outputdir report Suite/"]
+      [" --loglevel DEBUG -l log_results.html --outputdir report Suite"]
 
       #[" --loglevel DEBUG /test-suite"]
 
