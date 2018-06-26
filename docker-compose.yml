@@ -14,10 +14,12 @@ services:
     volumes:
     #- ${WORKSPACE}/test-suite:/test-suite
     #- ${WORKSPACE}/report:/report
-    - ${PWD}/test-suite:/test-suite
+    - ${PWD}/tests:/tests
     - ${PWD}/report:/report
     command:
-      [" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
+      #[" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
+      [" --loglevel DEBUG -l log_results.html --outputdir report /tests"]
+
       #[" --loglevel DEBUG /test-suite"]
 
     privileged: true
@@ -25,5 +27,5 @@ services:
     #  [" --help"]
 
 volumes:
-  test-suite:
+  tests:
   report:
