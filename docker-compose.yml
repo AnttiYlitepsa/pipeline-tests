@@ -14,11 +14,11 @@ services:
     volumes:
     #- ${WORKSPACE}/test-suite:/test-suite
     #- ${WORKSPACE}/report:/report
-    #- ${PWD}/Suite:/Suite
+    - ./Suite:/Suite
     - ./report:/report
     command:
-      [" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
-      #[" --loglevel DEBUG -l log_results.html --outputdir report Suite"]
+      #[" --loglevel DEBUG -l log_results.html --outputdir report /test-suite"]
+      [" --loglevel DEBUG -l log_results.html --outputdir report /Suite"]
 
       #[" --loglevel DEBUG /test-suite"]
 
@@ -28,4 +28,4 @@ services:
 
 volumes:
   report:
-  #Suite:
+  Suite:
