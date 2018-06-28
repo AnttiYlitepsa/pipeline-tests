@@ -8,14 +8,14 @@ services:
 
   robotframework:
     #build: .
-    image: robot_framework
+    image: robotframework
     depends_on:
     - xvfb
     volumes:
-    #- ./test-suite:/test-suite
+    - ./test-suite:/test-suite
     - ./report:/report
     command:
-      [" --loglevel DEBUG -l log_results.html --outputdir /report test-suite/"]
+      [" --loglevel DEBUG --outputdir /report /test-suite"]
       #[" --loglevel DEBUG test-suite/"]
 
     privileged: true
@@ -23,4 +23,5 @@ services:
     #  [" --help"]
 
 volumes:
+  test-suite:
   report:
