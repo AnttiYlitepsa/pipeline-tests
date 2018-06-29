@@ -1,12 +1,8 @@
 node {
-   //stage('Clone robot container repo') { // for display purposes
-      // Get some code from a GitHub repository
-      //checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b3eb9d33-13f1-4b34-921d-b7636eb61054', url: 'https://github.com/KC-Hybris/qa-robot-container.git']]]
-   //}
-   
+
    stage('Clone testsuite from github...') {
-       git changelog: false,
-       credentialsId: 'b3eb9d33-13f1-4b34-921d-b7636eb61054',
+       git changelog: true,
+       branch: 'master',
        poll: false,
        url: 'https://github.com/AnttiYlitepsa/pipeline-tests.git'
        sh('ls -R')
@@ -32,12 +28,10 @@ node {
       sh('sleep 2')
       sh('docker ps')
    }
-   
 
     stage('Publish results (visible under build)') {
         //This only works properly if the reports actually are published in the report folder!
-        step(
-        [
+        step([
         $class : 'RobotPublisher',
         outputPath : 'report/',
         outputFileName : "*.xml",
@@ -45,12 +39,7 @@ node {
         passThreshold : 100,
         unstableThreshold: 95.0,
         otherFiles : "*.png",
-        
-        ]
-        )
+        ])
     }
-   
-    
-    
     
 }
