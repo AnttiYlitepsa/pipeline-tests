@@ -1,0 +1,42 @@
+node {
+    
+    stage('Pull tests form repo') {
+        git credentialsId: 'a992b766-9e35-4394-8b7a-ebb467b216f5',
+        poll: false,
+        url: 'https://github.com/KC-Hybris/kc-hybris-test.git',
+        branch: 'master'
+        sh('ls -R')
+        sh('cat /kc-hybris-test/docker-compose.yml')
+        sh('cp -R * /kc-hybris-test/')
+        deleteDir()
+    }
+    
+
+   stage('Run the smoke tests and save the reports') {
+        sh('mkdir -p ${WORKSPACE}/reports')
+        sh('rm -rf ${WORKSPACE}/reports/*')
+        sh('cat /kc-hybris-test/docker-compose.yml')
+        dir('/kc-hybris-test') {
+            sh('ls -R')
+            sh('rm -rf RobotTests/05_reports/*')
+            sh('./runtests.sh login d')
+            sh('ls')
+            sh('echo $WORKSPACE')
+            sh('cp -R RobotTests/05_reports/* ${WORKSPACE}/reports/')
+        }
+   }
+
+
+    stage('Publish RF test results') {
+        sh('ls -R')
+        step([
+        $class : 'RobotPublisher',
+        outputPath : 'reports/',
+        outputFileName : "*.xml",
+        disableArchiveOutput : false,
+        passThreshold : 100,
+        unstableThreshold: 95.0,
+        otherFiles : "*.png",
+        ])
+    }
+}
