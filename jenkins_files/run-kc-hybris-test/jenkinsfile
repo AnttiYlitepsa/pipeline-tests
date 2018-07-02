@@ -1,45 +1,21 @@
 node {
-   /*stage('Open kc-hybris test folder') { // for display purposes
-      sh('ls')
-      sh('cat /kc-hybris-test/docker-compose.yml')
-      sh('cd /kc-hybris-test')
-      sh('ls -a')
-      sh('runtests.sh login d')
-      sh('ls')
-      echo $WORKSPACE
-      sh('cp -R RobotTests/05_reports/ ${WORKSPACE}/reports/')
-   }*/
-   
-   stage('Run the tests and save the reports in the workspace'){
-        sh '''mkdir -p ${WORKSPACE}/reports
-        #rm ${WORKSPACE}/reports/*
-        cat /kc-hybris-test/docker-compose.yml
-        cd /kc-hybris-test
 
-        rm -r RobotTests/05_reports/*
-
-
-        ./runtests.sh login d
-        ls
-        echo $WORKSPACE
-
-        cp -R RobotTests/05_reports/* ${WORKSPACE}/reports/'''
-
+   stage('Run the smoke tests and save the reports') {
+        sh('mkdir -p ${WORKSPACE}/reports')
+        sh('rm -rf ${WORKSPACE}/reports/*')
+        sh('cat /kc-hybris-test/docker-compose.yml')
+        dir('/kc-hybris-test') {
+            sh('ls -R')
+            sh('rm -rf RobotTests/05_reports/*')
+            sh('./runtests.sh login d')
+            sh('ls')
+            sh('echo $WORKSPACE')
+            sh('cp -R RobotTests/05_reports/* ${WORKSPACE}/reports/')
+        }
    }
 
 
-   /*stage('Run the smoke tests and save the reports') {
-       //sh('cd /kc-hybris-test')
-       sh('ls')
-       sh('.runtests.sh login d')
-       sh('ls')
-       echo $WORKSPACE
-       sh('cp -R RobotTests/05_reports/ ${WORKSPACE}/reports/')
-   }*/
-
-
     stage('Publish results (visible under build)') {
-        //This only works properly if the reports actually are published in the report folder!
         sh('ls -R')
         step([
         $class : 'RobotPublisher',
